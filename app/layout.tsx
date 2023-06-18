@@ -1,5 +1,7 @@
 import "./styles/globals.css"
 import { Poppins, Roboto } from "next/font/google"
+import { SessionProvider } from "next-auth/react"
+import AuthProvider from "./components/AuthProvider/AuthProvider"
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -27,7 +29,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${poppins.variable} ${roboto.variable}`}>
-      <body>{children}</body>
+      <body>
+        <AuthProvider>{children}</AuthProvider>
+      </body>
     </html>
   )
 }
